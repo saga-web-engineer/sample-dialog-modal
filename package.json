@@ -1,0 +1,43 @@
+{
+  "name": "sample-modal-dialog",
+  "private": true,
+  "scripts": {
+    "start:server": "browser-sync start -s dist -w src/*.html src/assets/css/*.css src/assets/js/*.js",
+    "compile:ejs": "ejs-cli -b src/templates/ \"/**/*.ejs\" -o dist/ -e src/templates/include",
+    "watch:ejs": "chokidar \"src/templates/\" -c \"npm run compile:ejs\" --initial",
+    "sass": "sass src/scss/style.scss:dist/assets/css/style.css --style=compressed --source-map-urls=relative",
+    "postcss": "postcss dist/assets/css/style.css -u autoprefixer postcss-sort-media-queries -o dist/assets/css/style.css",
+    "compile:css": "run-s sass postcss",
+    "watch:css": "chokidar \"src/scss/\" --command \"npm run compile:css\" --initial",
+    "compile:ts": "webpack --mode production",
+    "watch:ts": "webpack  --mode production --watch",
+    "delete:dist": "rimraf dist",
+    "prewatch:all": "run-s delete:dist",
+    "watch:all": "run-p watch:ejs watch:css watch:ts start:server",
+    "min:css": "cleancss -o dist/assets/css/style.css dist/assets/css/style.css",
+    "delete:map": "rimraf -g dist/**/*.map",
+    "prepare:all": "run-p min:css delete:map"
+  },
+  "volta": {
+    "node": "20.10.0",
+    "npm": "10.2.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "browser-sync": "^3.0.2",
+    "chokidar-cli": "^3.0.0",
+    "clean-css-cli": "^5.6.3",
+    "ejs-cli": "^2.2.3",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.33",
+    "postcss-cli": "^11.0.0",
+    "postcss-sort-media-queries": "^5.2.0",
+    "rimraf": "^5.0.5",
+    "sass": "^1.70.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
