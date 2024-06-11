@@ -6,11 +6,23 @@
   box-sizing: border-box;
 }
 
-a, area, button, input, label, select, summary, textarea, [tabindex] {
+:where(
+  :any-link,
+  button:not(disabled),
+  [type='button']:not(disabled),
+  [type='reset']:not(disabled),
+  [type='submit']:not(disabled),
+  label[for],
+  select,
+  summary,
+  [role='tab'],
+  [role='button']
+) {
+  cursor: pointer;
   touch-action: manipulation;
 }
 
-input, button, textarea, select, pre {
+input, button, textarea, select, pre, address {
   font: inherit;
 }
 
@@ -21,18 +33,13 @@ img {
 }
 
 textarea {
-  overflow: auto;
   resize: none;
+  // field-sizing: content;
 }
 
 fieldset {
   min-width: 0;
   border: none;
-}
-
-address {
-  font-style: normal;
-  line-height: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 
 ul:where([class]),
 ol:where([class]) {
-  list-style: none;
+  list-style-type: '';
 }
 
 main {
@@ -49,8 +56,7 @@ main {
 }
 
 summary {
-  list-style: none;
-  cursor: pointer;
+  list-style-type: '';
 
   &::-webkit-details-marker {
     display: none;
@@ -60,10 +66,6 @@ summary {
 button {
   border: none;
   appearance: none;
-}
-
-button:not(disabled), [type=button]:not(disabled), [type=reset]:not(disabled), [type=submit]:not(disabled), [role=button] {
-  cursor: pointer;
 }
 
 a {

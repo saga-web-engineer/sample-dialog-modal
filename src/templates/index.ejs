@@ -12,10 +12,18 @@
 
 <body style="height: 3000px;">
   <div style="width: 300px;aspect-ratio: 1; margin-left: auto; background-color: #ddd;">ダミー</div>
-  <button data-modal-open>モーダルを開く</button>
-  <dialog class="modal" style="display: none;">
+  <button data-modal-open="modal1">モーダル1を開く</button>
+  <button data-modal-open="modal2">モーダル2を開く</button>
+  <dialog class="modal" id="modal1" style="display: none;">
     <div class="modal__inner">
       <button data-modal-close>モーダルを閉じる</button>
+      <p>モーダル1の内容</p>
+    </div>
+  </dialog>
+  <dialog class="modal" id="modal2" style="display: none;">
+    <div class="modal__inner">
+      <button data-modal-close>モーダルを閉じる</button>
+      <p>モーダル2の内容</p>
     </div>
   </dialog>
 </body>

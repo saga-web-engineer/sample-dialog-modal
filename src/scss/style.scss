@@ -1,4 +1,4 @@
-@use "reset";
+@use 'reset';
 
 body:has(dialog[open]) {
   overflow: hidden;
@@ -51,4 +51,5 @@ body:has(dialog[open]) {
   height: 100%;
   padding: 2em;
   overflow: auto;
+  overscroll-behavior: contain;
 }
